@@ -18,6 +18,10 @@ import {CUSTOMER_CAPTURE_SLICE_INITIAL_STATE} from "./customer/customer-capture/
 import {ERROR_REDUCER} from "./common/error/store/error.reducer";
 import {ERROR_SLICE_INITIAL_STATE} from "./common/error/store/error.initial-state";
 import {ErrorSlice} from "./common/error/store/error.slice";
+import {
+    SHIPMENT_CAPTURE_SLICE_INITIAL_STATE,
+    SHIPMENT_CAPTURE_PAGE_REDUCER, ShipmentCaptureSlice
+} from "./shipment/reducer/shipment-capture-page.reducer"
 
 export interface State {
     shipmentListSlice: ShipmentListSlice;
@@ -25,6 +29,7 @@ export interface State {
     customerListSlice: CustomerListSlice;
     customerCaptureSlice: CustomerCaptureSlice;
     errorSlice: ErrorSlice;
+    shipmentCaptureSlice: ShipmentCaptureSlice;
 }
 
 export const INITIAL_STATE = {
@@ -33,6 +38,7 @@ export const INITIAL_STATE = {
     customerListSlice: CUSTOMER_LIST_SLICE_INITIAL_STATE,
     customerCaptureSlice: CUSTOMER_CAPTURE_SLICE_INITIAL_STATE,
     errorSlice: ERROR_SLICE_INITIAL_STATE
+    shipmentCaptureSlice: SHIPMENT_CAPTURE_SLICE_INITIAL_STATE
 };
 
 const reducers = {
@@ -41,6 +47,7 @@ const reducers = {
     customerListSlice: CUSTOMER_LIST_PAGE_REDUCER,
     customerCaptureSlice: CUSTOMER_CAPTURE_PAGE_REDUCER,
     errorSlice: ERROR_REDUCER
+    shipmentCaptureSlice: SHIPMENT_CAPTURE_PAGE_REDUCER,
 };
 
 export const REDUCER: ActionReducer<State> = combineReducers(reducers);

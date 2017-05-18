@@ -8,12 +8,13 @@ import {ShipmentCaptureComponent} from "./components/shipment-capture.component"
 import {TaskListPageComponent} from "./container/task-list-page.component";
 import {TaskListComponent} from "./components/task-list.component";
 import {TaskService} from "./api/task.service";
+import {ShipmentCapturePageComponent} from "./container/shipment-capture-page.component";
 
 @NgModule({
     imports: [SharedModule, SHIPMENT_ROUTING],
     declarations: [ShipmentCaptureComponent,
-        ShipmentListPageComponent, ShipmentListComponent, TaskListPageComponent, TaskListComponent],
-    exports: [ShipmentListPageComponent],
+        ShipmentListPageComponent, ShipmentListComponent, TaskListPageComponent, TaskListComponent, ShipmentCapturePageComponent],
+    exports: [ShipmentListPageComponent, ShipmentCapturePageComponent],
     providers: [ShipmentService, TaskService]
 })
 export class ShipmentModule {

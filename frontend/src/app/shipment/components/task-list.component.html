@@ -2,7 +2,8 @@
         id="task-list-component_task-table"
         [value]="taskList"
         selectionMode="single"
-        [(selection)]="selectedTask">
+        [(selection)]="selectedTask"
+        (onRowSelect)="onRowSelect($event)">
     <p-column field="createTime" header="{{'TASK-RESOURCE_DATE' | translate}}">
         <ng-template let-col let-task="rowData" pTemplate="body">
             <span>

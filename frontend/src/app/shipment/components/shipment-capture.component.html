@@ -1,5 +1,6 @@
+<h1 *ngIf="editorMode === 0">{{'SHIPMENT-CAPTURE-COMPONENT_TITLE-CREATE' | translate}}</h1>
+<h1 *ngIf="editorMode === 1">{{'SHIPMENT-CAPTURE-COMPONENT_TITLE-UPDATE' | translate}}</h1>
 <div class="shipment-capture-component">
-    <h1>{{'SHIPMENT-CAPTURE-COMPONENT_TITLE' | translate}}</h1>
     <form name="form" [formGroup]="shipmentCaptureForm" class="shipment-capture-form">
         <p-tabView>
             <p-tabPanel header="{{'SHIPMENT_CAPTURE_COMPONENT-PANEL_SENDER_RECEIVER_ADDRESS' | translate}}">
@@ -285,9 +286,13 @@
             <div class="ui-g-12 ui-md-4 ui-lg-2">
                 <button pButton type="button" (click)="cancel()" label="{{'GENERIC_CANCEL' | translate}}"></button>
             </div>
-            <div class="ui-g-12 ui-md-4 ui-lg-2">
+            <div class="ui-g-12 ui-md-4 ui-lg-2" *ngIf="editorMode === 0">
                 <button pButton type="button" (click)="createShipment()"
                         label="{{'GENERIC_CREATE' | translate}}" [disabled]="!shipmentCaptureForm.valid"></button>
+            </div>
+            <div class="ui-g-12 ui-md-4 ui-lg-2" *ngIf="editorMode === 1">
+                <button pButton type="button" (click)="createShipment()"
+                        label="{{'GENERIC_SAVE' | translate}}" [disabled]="!shipmentCaptureForm.valid"></button>
             </div>
         </div>
 

@@ -29,6 +29,7 @@ public class CargoDS {
         this.totalWeight = cargo.totalWeight;
         this.totalCapacity = cargo.totalCapacity;
         this.cargoDescription = cargo.cargoDescription;
+        this.dangerousGoods = cargo.dangerousGoods;
     }
 
     public CargoDS(Integer numberPackages, Double totalWeight, Double totalCapacity, String cargoDescription, Boolean dangerousGoods) {

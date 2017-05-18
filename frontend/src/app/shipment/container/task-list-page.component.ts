@@ -8,6 +8,7 @@ import {TaskListModel, TaskListRowModel} from "./task-list-page.model";
 import {State} from "../../app.reducers";
 import {TaskResource} from "../api/resources/task.resource";
 import {Address} from "../../customer/api/datastructures/address.datastructure";
+import {Router} from "@angular/router";
 
 @Component({
     selector: "educama-task-list-page",
@@ -25,6 +26,7 @@ export class TaskListPageComponent implements OnInit, OnDestroy{
     public selectedTask: TaskResource = new TaskResource();
 
     constructor(private _taskService: TaskService,
+                private _router: Router,
                 private _store: Store<State>) {
 
         this.taskListSlice = this._store.select(state => state.taskListSlice);
@@ -38,6 +40,13 @@ export class TaskListPageComponent implements OnInit, OnDestroy{
 
     public ngOnDestroy() {
         this.taskListSliceSubscription.unsubscribe();
+    }
+
+    // ***************************************************
+    // Event Handler
+    // ***************************************************
+    public onTaskSelectedEvent(trackingId: string) {
+        this._router.navigate(["/shipments/edit/" + trackingId]);
     }
 
     // ***************************************************

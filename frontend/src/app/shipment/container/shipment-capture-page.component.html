@@ -1,0 +1,8 @@
+<div class="shipment-capture-page">
+    <educama-shipment-capture
+            [shipment]="shipmentCaptureModel.shipment"
+            (saveShipmentEvent)="onSaveShipmentEvent($event)"
+            (createShipmentCancellationEvent)="onSaveShipmentCancellationEvent($event)"
+    >
+    </educama-shipment-capture>
+</div>
