@@ -4,7 +4,6 @@ import {CustomerService} from "../../customer/api/customer.service";
 import {CustomerResource} from "../../customer/api/resources/customer.resource";
 import {Router, ActivatedRoute} from "@angular/router";
 import {ShipmentResource} from "../api/resources/shipment.resource";
-import {ShipmentService} from "../api/shipment.service";
 import {Cargo} from "../api/datastructures/cargo.datastructure";
 import {ShipmentServices} from "../api/datastructures/services.datastructure";
 import {EditorMode} from "../../common/ui/enums/editor-mode.enum";
@@ -29,7 +28,7 @@ export class ShipmentCaptureComponent implements OnInit, DoCheck {
     public customerSuggestions: CustomerResource[];
 
     public editorMode: EditorMode;
-    private _isInitialized:boolean = false;
+    private _isInitialized: boolean = false;
 
     public senderStreet: string;
     public senderStreetNo: string;
@@ -63,8 +62,8 @@ export class ShipmentCaptureComponent implements OnInit, DoCheck {
 
     public ngOnInit() {
         this.shipmentCaptureForm = this._formBuilder.group({
-            sender: ["", [Validators.required]],
-            receiver: ["", [Validators.required]],
+            sender: [""],
+            receiver: [""],
             numberPackages: ["", [Validators.pattern("[0-9]+")]],
             totalWeight: ["", [Validators.pattern("[0-9]+")]],
             totalCapacity: ["", [Validators.pattern("[0-9]+")]],
@@ -78,6 +77,15 @@ export class ShipmentCaptureComponent implements OnInit, DoCheck {
             importCustomsClearance: [""],
             onCarriage: [""],
             customerTypeEnum: [""],
+            senderStreet: ["", [Validators.required]],
+            senderStreetNo: ["", [Validators.required]],
+            senderZipCode: ["", [Validators.required]],
+            senderCity: ["", [Validators.required]],
+            receiverStreet: ["", [Validators.required]],
+            receiverStreetNo: ["", [Validators.required]],
+            receiverZipCode: ["", [Validators.required]],
+            receiverCity: ["", [Validators.required]],
+
         });
     }
 
@@ -104,15 +112,16 @@ export class ShipmentCaptureComponent implements OnInit, DoCheck {
             this.shipmentCaptureForm.get("receiver").setValue(this.shipment.receiver.name);
 
             this.senderUUID = this.shipment.sender.uuid;
-            this.senderStreet = this.shipment.sender.address.street;
-            this.senderStreetNo = this.shipment.sender.address.streetNo;
-            this.senderCity = this.shipment.sender.address.city;
-            this.senderZipCode = this.shipment.sender.address.zipCode;
+            this.shipmentCaptureForm.get("senderStreet").setValue(this.shipment.sender.address.street);
+            this.shipmentCaptureForm.get("senderStreetNo").setValue(this.shipment.sender.address.streetNo);
+            this.shipmentCaptureForm.get("senderZipCode").setValue(this.shipment.sender.address.zipCode);
+            this.shipmentCaptureForm.get("senderCity").setValue(this.shipment.sender.address.city);
+
             this.receiverUUID = this.shipment.sender.uuid;
-            this.receiverStreet = this.shipment.receiver.address.street;
-            this.receiverStreetNo = this.shipment.receiver.address.streetNo;
-            this.receiverCity = this.shipment.receiver.address.city;
-            this.receiverZipCode = this.shipment.receiver.address.zipCode;
+            this.shipmentCaptureForm.get("receiverStreet").setValue(this.shipment.receiver.address.street);
+            this.shipmentCaptureForm.get("receiverStreetNo").setValue(this.shipment.receiver.address.streetNo);
+            this.shipmentCaptureForm.get("receiverZipCode").setValue(this.shipment.receiver.address.zipCode);
+            this.shipmentCaptureForm.get("receiverCity").setValue(this.shipment.receiver.address.city);
 
             this._isInitialized = true;
         }
@@ -133,20 +142,20 @@ export class ShipmentCaptureComponent implements OnInit, DoCheck {
 
     public onReceiverSelected(receiver: CustomerResource) {
 
-        this.receiverStreet = receiver.address.street;
-        this.receiverStreetNo = receiver.address.streetNo;
-        this.receiverZipCode = receiver.address.zipCode;
-        this.receiverCity = receiver.address.city;
         this.receiverUUID = receiver.uuid;
+        this.shipmentCaptureForm.get("receiverStreet").setValue(receiver.address.street);
+        this.shipmentCaptureForm.get("receiverStreetNo").setValue(receiver.address.streetNo);
+        this.shipmentCaptureForm.get("receiverZipCode").setValue(receiver.address.zipCode);
+        this.shipmentCaptureForm.get("receiverCity").setValue(receiver.address.city);
     }
 
     public onSenderSelected(sender: CustomerResource) {
 
-        this.senderStreet = sender.address.street;
-        this.senderStreetNo = sender.address.streetNo;
-        this.senderZipCode = sender.address.zipCode;
-        this.senderCity = sender.address.city;
         this.senderUUID = sender.uuid;
+        this.shipmentCaptureForm.get("senderStreet").setValue(sender.address.street);
+        this.shipmentCaptureForm.get("senderStreetNo").setValue(sender.address.streetNo);
+        this.shipmentCaptureForm.get("senderZipCode").setValue(sender.address.zipCode);
+        this.shipmentCaptureForm.get("senderCity").setValue(sender.address.city);
     }
 
     public cancel() {

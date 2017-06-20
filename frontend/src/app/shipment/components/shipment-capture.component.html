@@ -34,11 +34,12 @@
                             <div class="ui-g-12 ui-md-12 ui-xl-3">
                                 <label>{{'SHIPMENT-RESOURCE_SENDER-STREET-NUMBER' | translate}}</label>
                             </div>
+
                             <div class="ui-g-12 ui-md-6 ui-xl-6">
                                 <input pInputText
                                        disabled="true"
-                                       [(ngModel)]="senderStreet"
-                                       [ngModelOptions]="{standalone: true}"
+                                       name="senderStreet"
+                                       formControlName="senderStreet"
                                        id="shipment-capture-component_sender-street"
                                 >
                             </div>
@@ -46,8 +47,8 @@
                                 <input pInputText
                                        disabled="true"
                                        id="shipment-capture-component_sender-street_number"
-                                       [ngModel]="senderStreetNo"
-                                       [ngModelOptions]="{standalone: true}"
+                                       name="senderStreetNo"
+                                       formControlName="senderStreetNo"
                                 >
                             </div>
 
@@ -57,16 +58,16 @@
                             <div class="ui-g-12 ui-md-6 ui-xl-3">
                                 <input pInputText
                                        disabled="true"
-                                       [ngModel]="senderZipCode"
-                                       [ngModelOptions]="{standalone: true}"
+                                       name="senderZipCode"
+                                       formControlName="senderZipCode"
                                        id="shipment-capture-component_sender-zipcode"
                                 >
                             </div>
                             <div class="ui-g-12 ui-md-6 ui-xl-6">
                                 <input pInputText
                                        disabled="true"
-                                       [ngModel]="senderCity"
-                                       [ngModelOptions]="{standalone: true}"
+                                       name="senderCity"
+                                       formControlName="senderCity"
                                        id="shipment-capture-component_sender-city"
                                 >
 
@@ -102,9 +103,9 @@
 
                             <div class="ui-g-12 ui-md-6 ui-xl-6">
                                 <input pInputText
-                                       [ngModel]="receiverStreet"
+                                       name="receiverStreet"
+                                       formControlName="receiverStreet"
                                        disabled="true"
-                                       [ngModelOptions]="{standalone: true}"
                                        id="shipment-capture-component_receiver-street"
                                 >
                             </div>
@@ -112,8 +113,8 @@
                                 <input pInputText
                                        disabled="true"
                                        id="shipment-capture-component_receiver-street_number"
-                                       [ngModel]="receiverStreetNo"
-                                       [ngModelOptions]="{standalone: true}"
+                                       name="receiverStreetNo"
+                                       formControlName="receiverStreetNo"
                                 >
                             </div>
 
@@ -123,16 +124,16 @@
                             <div class="ui-g-12 ui-md-6 ui-xl-3">
                                 <input pInputText
                                        disabled="true"
-                                       [ngModel]="receiverZipCode"
-                                       [ngModelOptions]="{standalone: true}"
+                                       name="receiverZipCode"
+                                       formControlName="receiverZipCode"
                                        id="shipment-capture-component_receiver-zipcode"
                                 >
                             </div>
                             <div class="ui-g-12 ui-md-6 ui-xl-6">
                                 <input pInputText
                                        disabled="true"
-                                       [ngModel]="receiverCity"
-                                       [ngModelOptions]="{standalone: true}"
+                                       name="receiverCity"
+                                       formControlName="receiverCity"
                                        id="shipment-capture-component_receiver-city"
                                 >
                             </div>
